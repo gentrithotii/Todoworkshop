@@ -3,18 +3,18 @@ import CostumForm from "./CostumForm";
 function MainContent() {
   return (
     <>
-      <div>
-        <div className="p-0">
+      <div style={{ flex: 1, backgroundColor: "orange", padding: "2rem" }}>
+        <div className="p-2" style={{ backgroundColor: "red" }}>
           <h1>Content</h1>
         </div>
-        <div className="p-2">
-          <CostumForm />
-        </div>
 
-        <div className="p-2">
+        <CostumForm />
+
+        <div className="p-2" style={{ backgroundColor: "red" }}>
           <h1>Todo Title </h1>
         </div>
-        <div className="p-2">
+
+        <div className="p-2 " style={{ backgroundColor: "red" }}>
           <h1>todo 1</h1>
         </div>
       </div>

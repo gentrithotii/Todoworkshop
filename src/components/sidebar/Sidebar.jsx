@@ -5,27 +5,25 @@ import SidebarUserActions from "./SidebarUserActions";
 export const Sidebar = () => {
   return (
     <div
-      className="d-flex flex-column justify-content-between p-3 border-end bg-light"
-      style={{ width: "200px", height: "100vh" }}
+      className="d-flex flex-column bg-light border-end"
+      style={{
+        width: "15rem",
+        minHeight: "100vh",
+      }}
     >
-      {/* Icon */}
-      <div className="text-start mb-4 text-center">
+      <div className="p-3 text-center border-bottom">
         <img
-          className="my-2"
-          height="100px"
-          width="60px"
           src={SmurfIcon}
           alt="Logo"
+          style={{ width: "40px", height: "70px" }}
         />
       </div>
 
-      {/* Sidebar Links */}
-      <div className="flex-grow-1 text-start">
+      <div className="flex-grow-1">
         <SidebarLinks />
       </div>
 
-      {/* Sidebar Action */}
-      <div className="mt-auto text-start">
+      <div className="p-3 border-top">
         <SidebarUserActions />
       </div>
     </div>

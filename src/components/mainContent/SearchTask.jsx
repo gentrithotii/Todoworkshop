@@ -4,9 +4,7 @@ import { Button } from "react-bootstrap";
 
 const SearchTask = () => {
   return (
-    <div className="d-flex- mb-4 w-50 justify-content-center">
-      {/* Check this div */}
-
+    <div className="d-flex mb-4 w-50 ">
       <InputGroup>
         <Form.Control placeholder="Search tasks..." />
         <Button variant="outline-secondary">

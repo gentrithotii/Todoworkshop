@@ -2,13 +2,18 @@ import CustomForm from "./CustomForm";
 import SearchTask from "./SearchTask";
 import TodoDataDisplay from "./TodoDataDisplay";
 import Card from "react-bootstrap/Card";
+import Row from "react-bootstrap/Row";
 
 function MainContent() {
   return (
     <div className="flex-grow-1 p-5">
-      <SearchTask />
 
       {/* Search */}
+      <Row className=" justify-content-center">
+       
+        <SearchTask />
+        <hr class="hr" />
+      </Row>
 
       {/* Form*/}
       <CustomForm />

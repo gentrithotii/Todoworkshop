@@ -3,15 +3,25 @@ import SearchTask from "./SearchTask";
 import TodoDataDisplay from "./TodoDataDisplay";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
+import Container from "react-bootstrap/Container";
+import Col from "react-bootstrap/Col";
 
 function MainContent() {
   return (
     <div className="flex-grow-1 p-5">
-
       {/* Search */}
-      <Row className=" justify-content-center">
-       
-        <SearchTask />
+      <Row>
+        <Container>
+          <Row>
+            <Col xs={4}>
+              <h1>Tasks</h1>
+            </Col>
+            <Col xs={4}>
+              <SearchTask />
+            </Col>
+          </Row>
+        </Container>
+
         <hr class="hr" />
       </Row>
 

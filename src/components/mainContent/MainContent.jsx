@@ -7,12 +7,10 @@ import Row from "react-bootstrap/Row";
 function MainContent() {
   return (
     <div className="flex-grow-1 p-5">
-
       {/* Search */}
       <Row className=" justify-content-center">
-       
         <SearchTask />
-        <hr class="hr" />
+        <hr className="hr" />
       </Row>
 
       {/* Form*/}

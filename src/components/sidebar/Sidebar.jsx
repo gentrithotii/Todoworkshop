@@ -1,31 +1,56 @@
-import SidebarLinks from "./SidebarLinks";
-import SmurfIcon from "../../assets/test.png";
-import SidebarUserActions from "./SidebarUserActions";
+import { useState } from "react";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 export const Sidebar = () => {
+  const [collapsed, setCollapsed] = useState(false);
+
   return (
     <div
-      className="d-flex flex-column bg-light border-end"
+      className="bg-light border-end d-flex flex-column justify-content-between vh-100"
       style={{
-        width: "15rem",
-        minHeight: "100vh",
+        width: collapsed ? "80px" : "250px",
+        transition: "width 0.3s ease",
       }}
     >
-      <div className="p-3 text-center border-bottom">
-        <img
-          src={SmurfIcon}
-          alt="Logo"
-          style={{ width: "40px", height: "70px" }}
-        />
+      {/* Top Section */}
+      <div>
+        <button
+          className="btn btn-sm btn-outline-secondary m-3"
+          onClick={() => setCollapsed(!collapsed)}
+        >
+          {collapsed ? "→" : "←"}
+        </button>
+
+        <ul className="list-unstyled px-2">
+          <li className="mb-3 d-flex align-items-center">
+            <i className="bi bi-grid fs-5"></i>
+            {!collapsed && <span className="ms-2">Dashboard</span>}
+          </li>
+          <li className="mb-3 d-flex align-items-center">
+            <i className="bi bi-people fs-5"></i>
+            {!collapsed && <span className="ms-2">Users</span>}
+          </li>
+          <li className="mb-3 d-flex align-items-center">
+            <i className="bi bi-list-task fs-5"></i>
+            {!collapsed && <span className="ms-2">Tasks</span>}
+          </li>
+          <li className="mb-3 d-flex align-items-center">
+            <i className="bi bi-gear fs-5"></i>
+            {!collapsed && <span className="ms-2">Settings</span>}
+          </li>
+        </ul>
       </div>
 
-      <div className="flex-grow-1">
-        <SidebarLinks />
-      </div>
-
+      {/* Bottom Section */}
       <div className="p-3 border-top">
-        <SidebarUserActions />
+        {!collapsed && <div className="small text-muted">Username</div>}
+        <button className="btn btn-outline-danger btn-sm w-100 mt-2">
+          <i className="bi bi-box-arrow-right"></i>
+          {!collapsed && <span className="ms-2">Logout</span>}
+        </button>
       </div>
     </div>
   );
 };
+
+export default Sidebar;

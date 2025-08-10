@@ -1,6 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Sidebar } from "./components/sidebar/Sidebar";
 import MainContent from "./components/mainContent/MainContent";
+import SidebarHider from "./components/sidebar/SidebarHider";
 
 function App() {
   return (

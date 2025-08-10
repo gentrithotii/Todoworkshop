@@ -18,7 +18,7 @@ function SidebarHider() {
 
       <Offcanvas show={show} onHide={handleClose} responsive="lg">
         <Offcanvas.Header closeButton></Offcanvas.Header>
-        {/* <Sidebar /> */}
+        <Sidebar />
       </Offcanvas>
     </>
   );

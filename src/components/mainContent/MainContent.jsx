@@ -1,25 +1,24 @@
-import CustomForm from "./CustomForm";
+import TodoForm from "./TodoForm";
 import SearchTask from "./SearchTask";
 import TodoDataDisplay from "./TodoDataDisplay";
-import Row from "react-bootstrap/Row";
 import TodoHeader from "./TodoHeader";
 
 function MainContent() {
   return (
     <div className="flex-grow-1 p-5">
       {/* Search */}
-      <Row className=" justify-content-center">
+      <div className="d-flex justify-content-center">
         <SearchTask />
-        <hr className="hr" />
-      </Row>
+      </div>
 
+      <hr className="hr pb-3" />
       {/* Form*/}
-      <CustomForm />
+      <TodoForm />
 
       {/* Todos  */}
       <TodoHeader />
 
-      {/* Exam Todo */}
+      {/* Example Todo */}
       <TodoDataDisplay />
     </div>
   );

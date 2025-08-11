@@ -1,32 +1,44 @@
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
-
 const TodoDataDisplay = () => {
   return (
-    <Card className="my-3 ">
-      <Card.Body>
+    // Left part
+    <div className="my-3  border rounded px-3 py-3">
+      <div>
         <div className="d-flex justify-content-between align-items-start">
           <div>
             <h6>Task 1</h6>
             <p className="mb-1 text-muted">Description for Task 1</p>
             <small className="text-danger">Due 16/10/2025, 4:50 PM</small>
             <div>
-              <Button size="sm" variant="outline-secondary" className="mt-2">
+              <button
+                size="sm"
+                variant="outline-secondary"
+                className="mt-2 btn btn-secondary"
+              >
                 1 attachment
-              </Button>
+              </button>
             </div>
           </div>
+
+          {/* Right part */}
           <div>
-            <Button variant="outline-danger" size="sm" className="me-1">
+            <button
+              variant="outline-danger"
+              size="sm"
+              className="me-1 btn btn btn-outline-danger"
+            >
               <i className="bi bi-x"></i>
-            </Button>
-            <Button variant="outline-primary" size="sm">
+            </button>
+            <button
+              variant="outline-primary"
+              className="btn btn-outline-primary"
+              size="sm"
+            >
               <i className="bi bi-pencil"></i>
-            </Button>
+            </button>
           </div>
         </div>
-      </Card.Body>
-    </Card>
+      </div>
+    </div>
   );
 };
 

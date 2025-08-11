@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { Sidebar } from "./Sidebar";
@@ -12,9 +11,9 @@ function SidebarHider() {
 
   return (
     <>
-      <Button variant="primary" className="d-lg-none h-25" onClick={handleShow}>
+      <button variant="primary" className="d-lg-none h-25" onClick={handleShow}>
         Show Sidebar
-      </Button>
+      </button>
 
       <Offcanvas show={show} onHide={handleClose} responsive="lg">
         <Offcanvas.Header closeButton></Offcanvas.Header>

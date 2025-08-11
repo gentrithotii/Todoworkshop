@@ -10,7 +10,7 @@ function MainContent() {
       {/* Search */}
       <Row className=" justify-content-center">
         <SearchTask />
-        <hr class="hr" />
+        <hr className="hr" />
       </Row>
 
       {/* Form*/}

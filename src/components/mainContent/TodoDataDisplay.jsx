@@ -1,7 +1,7 @@
 const TodoDataDisplay = () => {
   return (
-    // Left part
-    <div className="my-3  border rounded px-3 py-3">
+    <div className="my-3  border rounded mx-0 px-3 py-3 ">
+      {/* // Left part */}
       <div>
         <div className="d-flex justify-content-between align-items-start">
           <div>

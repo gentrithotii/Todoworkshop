@@ -10,6 +10,16 @@ function MainContent() {
     setTodos(todos.filter((_, i) => i !== index));
   };
 
+  const completeTask = (item) => {
+    const updatedTodos = todos.map((todo) =>
+      todo.id === item.id ? { ...todo, isDone: !todo.isDone } : todo
+    );
+
+    console.log(updatedTodos);
+
+    setTodos(updatedTodos);
+  };
+
   return (
     <div className="flex-grow-1 p-5">
       {/* Search */}
@@ -39,7 +49,11 @@ function MainContent() {
       <TodoHeader />
 
       {/* Example Todo */}
-      <TodoDataDisplay loadData={todos} deleteData={deleteAtIndex} />
+      <TodoDataDisplay
+        loadData={todos}
+        deleteData={deleteAtIndex}
+        completeTask={completeTask}
+      />
     </div>
   );
 }

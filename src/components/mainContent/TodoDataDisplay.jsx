@@ -1,20 +1,21 @@
 import TodoTask from "./TodoTask";
 
-const TodoDataDisplay = ({ loadData, deleteData }) => {
+const TodoDataDisplay = ({ loadData, deleteData, completeTask }) => {
   return (
     <>
-      {loadData ? (
+      {loadData.length === 0 ? (
+        <div className="flex-grow-1 text-center border rounded my-5 p-2">
+          <h2 className="m-0">No Todos in the list</h2>
+        </div>
+      ) : (
         loadData.map((item, index) => (
           <TodoTask
-            title={item.title}
-            description={item.description}
-            dueDate={item.dueDate}
+            object={item}
             key={index}
             removeTodo={() => deleteData(index)}
+            markCompleted={() => completeTask(item)}
           />
         ))
-      ) : (
-        <h1>No Todos in the list</h1>
       )}
     </>
   );

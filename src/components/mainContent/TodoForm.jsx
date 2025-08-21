@@ -9,7 +9,12 @@ const TodoForm = ({ addTodo }) => {
   } = useForm();
 
   const onSubmit = (data) => {
-    addTodo(data);
+    const itemObject = {
+      ...data,
+      id: crypto.randomUUID(),
+      isDone: false,
+    };
+    addTodo(itemObject);
     reset();
   };
 

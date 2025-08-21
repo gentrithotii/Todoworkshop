@@ -56,7 +56,7 @@ function MainContent() {
           incompleteTodos={incompleteTodos}
         />
 
-        {/* Example Todo */}
+        {/* Todos data disply */}
         <TodoDataDisplay
           loadData={todos}
           deleteData={deleteAtIndex}

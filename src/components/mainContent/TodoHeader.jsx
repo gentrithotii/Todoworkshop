@@ -4,6 +4,11 @@ const TodoHeader = () => {
       {/* Left side text */}
       <h5 className="mb-0">Todos</h5>
 
+      <div className="d-flex ">
+        <p className="px-2 my-2 text-success bg">Completed: 1</p>
+        <p className="px-2 my-2 text-danger">Incomplete: 1</p>
+      </div>
+
       {/* Right side buttons */}
       <div className="btn-group">
         <button className="btn btn-outline-secondary btn-sm">

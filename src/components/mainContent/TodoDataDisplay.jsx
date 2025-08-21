@@ -1,17 +1,6 @@
-import { useEffect, useState } from "react";
 import TodoTask from "./TodoTask";
 
-const TodoDataDisplay = ({ loadData }) => {
-  const [checkData, setCheckData] = useState(false);
-
-  useEffect(() => {
-    if (loadData.length === 0) {
-      setCheckData(false);
-    } else {
-      setCheckData(true);
-    }
-  }, [checkData]);
-
+const TodoDataDisplay = ({ loadData, deleteData }) => {
   return (
     <div className="my-3  border rounded mx-0 px-3 py-3 ">
       {loadData ? (
@@ -21,6 +10,7 @@ const TodoDataDisplay = ({ loadData }) => {
             description={item.description}
             dueDate={item.dueDate}
             key={index}
+            removeTodo={() => deleteData(index)}
           />
         ))
       ) : (

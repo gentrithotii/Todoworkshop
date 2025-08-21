@@ -1,10 +1,17 @@
 import TodoForm from "./TodoForm";
 import TodoDataDisplay from "./TodoDataDisplay";
 import TodoHeader from "./TodoHeader";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function MainContent() {
   const [todos, setTodos] = useState([]);
+  const [completedTodos, setCompletedTodos] = useState(0);
+  const [incomleteTodos, setIncompleteTodos] = useState(0);
+
+  useEffect(() => {
+    setCompletedTodos(todos.filter((i) => i.isDone === true).length);
+    setIncompleteTodos(todos.length - completedTodos);
+  }, [todos, completedTodos]);
 
   const deleteAtIndex = (index) => {
     setTodos(todos.filter((_, i) => i !== index));
@@ -46,7 +53,10 @@ function MainContent() {
       <TodoForm addTodo={(addTodo) => setTodos([...todos, addTodo])} />
 
       {/* Todos  */}
-      <TodoHeader />
+      <TodoHeader
+        completedTodos={completedTodos}
+        incomleteTodos={incomleteTodos}
+      />
 
       {/* Example Todo */}
       <TodoDataDisplay

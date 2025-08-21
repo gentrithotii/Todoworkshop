@@ -1,4 +1,4 @@
-const TodoTask = ({ object, removeTodo, updateTodo, markCompleted }) => {
+const TodoTask = ({ object, removeTodo, markCompleted }) => {
   const item = {
     id: object.id,
     title: object.title,

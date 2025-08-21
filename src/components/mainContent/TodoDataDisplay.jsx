@@ -2,7 +2,7 @@ import TodoTask from "./TodoTask";
 
 const TodoDataDisplay = ({ loadData, deleteData }) => {
   return (
-    <div className="my-3  border rounded mx-0 px-3 py-3 ">
+    <>
       {loadData ? (
         loadData.map((item, index) => (
           <TodoTask
@@ -16,7 +16,7 @@ const TodoDataDisplay = ({ loadData, deleteData }) => {
       ) : (
         <h1>No Todos in the list</h1>
       )}
-    </div>
+    </>
   );
 };
 

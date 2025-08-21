@@ -19,7 +19,7 @@ const TodoForm = ({ addTodo }) => {
   };
 
   return (
-    <div className="card mb-4">
+    <div className="card mb-4 mx-0">
       <div className="card-body">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-3">
@@ -61,7 +61,7 @@ const TodoForm = ({ addTodo }) => {
           </div>
 
           <div className="row mb-3">
-            <div className="col-md-6">
+            <div className="col-12 col-md-6 col-lg-4">
               <label htmlFor="dueDate" className="form-label">
                 Due Date
               </label>
@@ -75,7 +75,8 @@ const TodoForm = ({ addTodo }) => {
                 <div className="invalid-feedback">{errors.dueDate.message}</div>
               )}
             </div>
-            {/* <div className="col-md-6">
+            {/* Uncomment if needed */}
+            {/* <div className="col-12 col-md-6 col-lg-4">
               <label htmlFor="assignTo" className="form-label">
                 Assign to (optional)
               </label>
@@ -91,20 +92,7 @@ const TodoForm = ({ addTodo }) => {
             </div> */}
           </div>
 
-          {/* <div className="mb-3">
-            <label htmlFor="attachments" className="form-label">
-              Attachments
-            </label>
-            <input
-              type="file"
-              id="attachments"
-              className="form-control"
-              {...register("attachments")}
-              multiple
-            />
-          </div> */}
-
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-primary w-100 w-md-auto">
             + Add Todo
           </button>
         </form>

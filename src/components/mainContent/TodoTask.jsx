@@ -8,36 +8,35 @@ const TodoTask = ({ object, removeTodo, markCompleted }) => {
   };
 
   return (
-    <div className="my-3  border rounded mx-0 px-3 py-3 ">
-      <div className="d-flex justify-content-between align-items-start pt-2">
-        <div>
-          <h6>{item.title}</h6>
-          <p className="mb-1 text-muted">{item.description}</p>
+    <div className="border rounded mx-0 px-2 py-2 my-3">
+      <div
+        className="d-flex align-items-center position-relative"
+        style={{ minHeight: "60px" }}
+      >
+        {/* Left: Todo details */}
+        <div className="flex-grow-1">
+          <h6 className="mb-1">{item.title}</h6>
+          <p className="mb-1 text-muted text-truncate">{item.description}</p>
           <small className="text-danger">{item.dueDate}</small>
         </div>
 
-        {/* Right part */}
-
-        <div
-          className={`${
-            item.isDone
-              ? "bg-success d-flex text-white px-3  rounded"
-              : "bg-secondary d-flex text-white px-3 rounded"
-          }`}
-        >
-          {item.isDone ? "Complete" : "Pending"}
+        {/* Middle: Status badge */}
+        <div className="position-absolute start-50 translate-middle-x">
+          <span
+            className={`${
+              item.isDone ? "bg-success text-white" : "bg-secondary text-white"
+            } px-3 py-1 rounded text-center`}
+            style={{ fontSize: "0.8rem", minWidth: "70px" }}
+          >
+            {item.isDone ? "Complete" : "Pending"}
+          </span>
         </div>
 
-        {/* Right part */}
-
-        <div>
+        {/* Right: Action buttons */}
+        <div className="d-flex gap-1 ms-auto">
           <button
-            variant="outline-danger"
-            size="sm"
-            className={`${
-              item.isDone
-                ? "me-1 btn btn btn-outline-secondary"
-                : "me-1 btn btn btn-outline-success"
+            className={`btn btn-sm ${
+              item.isDone ? "btn-outline-secondary" : "btn-outline-success"
             }`}
             onClick={() => markCompleted()}
           >
@@ -49,18 +48,15 @@ const TodoTask = ({ object, removeTodo, markCompleted }) => {
           </button>
 
           <button
-            variant="outline-danger"
-            size="sm"
-            className="me-1 btn btn btn-outline-danger"
+            className="btn btn-sm btn-outline-danger"
             onClick={() => removeTodo()}
           >
             <i className="bi bi-x"></i>
           </button>
+
           <button
             onClick={() => console.log("Yo")}
-            variant="outline-primary"
-            className="btn btn-outline-primary"
-            size="sm"
+            className="btn btn-sm btn-outline-primary"
           >
             <i className="bi bi-pencil"></i>
           </button>

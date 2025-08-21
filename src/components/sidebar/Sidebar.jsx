@@ -5,21 +5,19 @@ import SidebarUserActions from "./SidebarUserActions";
 export const Sidebar = () => {
   return (
     <div
-      className="d-flex flex-column bg-light border-end"
-      style={{
-        width: "15rem",
-        minHeight: "100vh",
-      }}
+      className="d-flex flex-column bg-light border-end vh-100"
+      style={{ width: "250px" }}
     >
       <div className="p-3 text-center border-bottom">
         <img
           src={SmurfIcon}
           alt="Logo"
-          style={{ width: "40px", height: "70px" }}
+          className="img-fluid"
+          style={{ maxWidth: "40px", maxHeight: "70px" }}
         />
       </div>
 
-      <div className="flex-grow-1">
+      <div className="flex-grow-1 overflow-auto">
         <SidebarLinks />
       </div>
 

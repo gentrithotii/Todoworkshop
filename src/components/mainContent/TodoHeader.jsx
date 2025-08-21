@@ -1,16 +1,12 @@
-const TodoHeader = ({ completedTodos, incomleteTodos }) => {
+const TodoHeader = ({ completedTodos, incompleteTodos }) => {
   return (
-    <div className="d-flex justify-content-between border rounded align-items-center border py-3 px-3">
-      {/* Left side text */}
+    <div className="d-flex justify-content-between align-items-center border rounded py-2 px-3 my-3">
       <h5 className="mb-0">Todos</h5>
-
-      <div className="d-flex ">
-        <p className="px-2 my-2 text-success bg">Completed: {completedTodos}</p>
-        <p className="px-2 my-2 text-danger">Incomplete: {incomleteTodos}</p>
+      <div className="d-flex flex-wrap gap-2 justify-content-center">
+        <p className="mb-0 text-success">Done: {completedTodos}</p>
+        <p className="mb-0 text-danger">Pending: {incompleteTodos}</p>
       </div>
-
-      {/* Right side buttons */}
-      <div className="btn-group">
+      <div className="btn-group flex-shrink-0">
         <button className="btn btn-outline-secondary btn-sm">
           <i className="bi bi-filter"></i>
         </button>

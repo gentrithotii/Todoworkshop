@@ -28,8 +28,9 @@ function MainContent() {
     <div className="flex-grow-1 p-2 p-md-4 overflow-auto">
       <div className="container">
         {/* Search */}
+
         <div className="d-flex justify-content-center">
-          <div className="d-flex mb-3 w-100 w-lg-75 w-xl-50">
+          <div className="d-flex mb-3  w-50 w-lg-50 w-xl-50">
             <input
               type="search"
               className="form-control rounded-end-0"
@@ -45,7 +46,7 @@ function MainContent() {
         </div>
 
         {/* Divider */}
-        <hr className="hr mb-3" />
+        <hr className="hr mb-5" />
 
         {/* Form */}
         <TodoForm addTodo={(addTodo) => setTodos([...todos, addTodo])} />

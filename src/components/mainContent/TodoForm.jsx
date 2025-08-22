@@ -69,7 +69,13 @@ const TodoForm = ({ addTodo }) => {
                 type="datetime-local"
                 id="dueDate"
                 className={`form-control ${errors.dueDate ? "is-invalid" : ""}`}
-                {...register("dueDate", { required: "Due date is required" })}
+                min={new Date().toISOString().slice(0, 16)}
+                {...register("dueDate", {
+                  required: "Due date is required",
+                  validate: (value) =>
+                    new Date(value) >= new Date() ||
+                    "Due date cannot be in the past",
+                })}
               />
               {errors.dueDate && (
                 <div className="invalid-feedback">{errors.dueDate.message}</div>

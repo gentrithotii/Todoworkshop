@@ -10,7 +10,7 @@ const TodoTask = ({ object, removeTodo, markCompleted }) => {
   return (
     <div className="border rounded mx-0 px-2 py-2 my-3">
       <div
-        className="d-flex align-items-center position-relative"
+        className="d-flex align-items-center justify-content-between flex-wrap"
         style={{ minHeight: "60px" }}
       >
         {/* Left: Todo details */}
@@ -21,7 +21,7 @@ const TodoTask = ({ object, removeTodo, markCompleted }) => {
         </div>
 
         {/* Middle: Status badge */}
-        <div className="position-absolute start-50 translate-middle-x">
+        <div className="mx-2">
           <span
             className={`${
               item.isDone ? "bg-success text-white" : "bg-secondary text-white"
@@ -33,7 +33,7 @@ const TodoTask = ({ object, removeTodo, markCompleted }) => {
         </div>
 
         {/* Right: Action buttons */}
-        <div className="d-flex gap-1 ms-auto">
+        <div className="d-flex gap-1">
           <button
             className={`btn btn-sm ${
               item.isDone ? "btn-outline-secondary" : "btn-outline-success"

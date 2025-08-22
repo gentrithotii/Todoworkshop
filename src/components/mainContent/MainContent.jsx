@@ -2,43 +2,64 @@ import TodoForm from "./TodoForm";
 import TodoDataDisplay from "./TodoDataDisplay";
 import TodoHeader from "./TodoHeader";
 import { useEffect, useState } from "react";
+import todoData from "../../exampledata/todos.json";
 
 function MainContent() {
+  const [allTodos, setAllTodos] = useState(todoData);
   const [todos, setTodos] = useState([]);
   const [completedTodos, setCompletedTodos] = useState(0);
   const [incompleteTodos, setIncompleteTodos] = useState(0);
+  const [searchTodos, setSearchTodos] = useState("");
 
   useEffect(() => {
-    setCompletedTodos(todos.filter((i) => i.isDone === true).length);
+    setCompletedTodos(todos.filter((i) => i.isDone).length);
     setIncompleteTodos(todos.length - completedTodos);
   }, [todos, completedTodos]);
 
+  useEffect(() => {
+    if (!searchTodos) {
+      setTodos(allTodos);
+    } else {
+      setTodos(
+        allTodos.filter((i) =>
+          i.title.toLowerCase().includes(searchTodos.toLowerCase())
+        )
+      );
+    }
+  }, [searchTodos, allTodos]);
+
   const deleteAtIndex = (index) => {
-    setTodos(todos.filter((_, i) => i !== index));
+    const newAllTodos = allTodos.filter((_, i) => i !== index);
+    setAllTodos(newAllTodos);
+    setTodos(newAllTodos);
   };
 
   const completeTask = (item) => {
-    const updatedTodos = todos.map((todo) =>
+    const updated = allTodos.map((todo) =>
       todo.id === item.id ? { ...todo, isDone: !todo.isDone } : todo
     );
-    setTodos(updatedTodos);
+    setAllTodos(updated);
+    setTodos(updated);
   };
 
   return (
-    <div className="flex-grow-1 p-2 p-md-4 overflow-auto">
+    <div className="container p-md-4">
       <div className="container">
         {/* Search */}
-
         <div className="d-flex justify-content-center">
-          <div className="d-flex mb-3  w-50 w-lg-50 w-xl-50">
+          <div className="d-flex mb-3 w-50">
             <input
               type="search"
               className="form-control rounded-end-0"
               placeholder="Search here"
+              value={searchTodos}
+              onChange={(e) => setSearchTodos(e.target.value)}
+              onAbort={() => setSearchTodos("")}
             />
             <button
               className="btn border-start-0 rounded-start-0 bg-white text-secondary"
               style={{ borderColor: "#ced4da" }}
+              disabled
             >
               <i className="bi bi-search"></i>
             </button>
@@ -49,9 +70,14 @@ function MainContent() {
         <hr className="hr mb-5" />
 
         {/* Form */}
-        <TodoForm addTodo={(addTodo) => setTodos([...todos, addTodo])} />
+        <TodoForm
+          addTodo={(newTodo) => {
+            setAllTodos([...allTodos, newTodo]);
+            setTodos([...allTodos, newTodo]);
+          }}
+        />
 
-        {/* Todos */}
+        {/* Header */}
         <TodoHeader
           completedTodos={completedTodos}
           incompleteTodos={incompleteTodos}

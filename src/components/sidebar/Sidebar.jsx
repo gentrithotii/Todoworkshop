@@ -5,8 +5,8 @@ import SidebarUserActions from "./SidebarUserActions";
 export const Sidebar = () => {
   return (
     <div
-      className="d-flex flex-column bg-light border-end vh-100"
-      style={{ width: "250px" }}
+      className="d-flex flex-column bg-light border-end position-sticky top-0"
+      style={{ width: "250px", minHeight: "100vh" }}
     >
       <div className="p-3 text-center border-bottom">
         <img

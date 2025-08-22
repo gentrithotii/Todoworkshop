@@ -1,0 +1,30 @@
+[
+  {
+    "id": "1",
+    "title": "Buy groceries",
+    "description": "Milk, eggs, bread, and cheese",
+    "dueDate": "2025-08-23T14:00",
+    "isDone": false
+  },
+  {
+    "id": "2",
+    "title": "Finish React project",
+    "description": "Complete the todo app and push it to GitHub",
+    "dueDate": "2025-08-25T18:30",
+    "isDone": false
+  },
+  {
+    "id": "3",
+    "title": "Workout",
+    "description": "Go for a 5km run at the park",
+    "dueDate": "2025-08-22T19:00",
+    "isDone": true
+  },
+  {
+    "id": "4",
+    "title": "Doctor appointment",
+    "description": "Routine checkup at the health center",
+    "dueDate": "2025-08-30T09:00",
+    "isDone": false
+  }
+]

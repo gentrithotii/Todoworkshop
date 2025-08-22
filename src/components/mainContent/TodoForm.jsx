@@ -91,10 +91,11 @@ const TodoForm = ({ addTodo }) => {
               </select>
             </div> */}
           </div>
-
-          <button type="submit" className="btn btn-primary w-100 w-md-auto">
-            + Add Todo
-          </button>
+          <div className="d-flex justify-content-center">
+            <button type="submit" className="btn btn-primary  w-md-auto">
+              + Add Todo
+            </button>
+          </div>
         </form>
       </div>
     </div>

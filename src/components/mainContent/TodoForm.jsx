@@ -66,7 +66,7 @@ const TodoForm = ({ addTodo }) => {
                 Due Date
               </label>
               <input
-                type="date"
+                type="datetime-local"
                 id="dueDate"
                 className={`form-control ${errors.dueDate ? "is-invalid" : ""}`}
                 {...register("dueDate", { required: "Due date is required" })}

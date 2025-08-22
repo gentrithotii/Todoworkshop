@@ -1,3 +1,5 @@
+import { formatDate } from "../../util/formatDate";
+
 const TodoTask = ({ object, removeTodo, markCompleted }) => {
   const item = {
     id: object.id,
@@ -17,7 +19,7 @@ const TodoTask = ({ object, removeTodo, markCompleted }) => {
         <div className="flex-grow-1">
           <h6 className="mb-1">{item.title}</h6>
           <p className="mb-1 text-muted text-truncate">{item.description}</p>
-          <small className="text-danger">{item.dueDate}</small>
+          <small className="text-danger">{formatDate(item.dueDate)}</small>
         </div>
 
         {/* Middle: Status badge */}

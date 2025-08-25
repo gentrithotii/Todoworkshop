@@ -10,6 +10,7 @@ function MainContent() {
   const [completedTodos, setCompletedTodos] = useState(0);
   const [incompleteTodos, setIncompleteTodos] = useState(0);
   const [searchTodos, setSearchTodos] = useState("");
+  const [updateTodo, setUpdateTodo] = useState("");
 
   useEffect(() => {
     setCompletedTodos(todos.filter((i) => i.isDone).length);
@@ -28,8 +29,8 @@ function MainContent() {
     }
   }, [searchTodos, allTodos]);
 
-  const deleteAtIndex = (index) => {
-    const newAllTodos = allTodos.filter((_, i) => i !== index);
+  const deleteAtIndex = (id) => {
+    const newAllTodos = allTodos.filter((todo) => todo.id !== id);
     setAllTodos(newAllTodos);
     setTodos(newAllTodos);
   };
@@ -75,6 +76,7 @@ function MainContent() {
             setAllTodos([...allTodos, newTodo]);
             setTodos([...allTodos, newTodo]);
           }}
+          updateTodo={updateTodo}
         />
 
         {/* Header */}
@@ -83,11 +85,12 @@ function MainContent() {
           incompleteTodos={incompleteTodos}
         />
 
-        {/* Todos data disply */}
+        {/* Todos data display */}
         <TodoDataDisplay
           loadData={todos}
           deleteData={deleteAtIndex}
           completeTask={completeTask}
+          updateTodo={setUpdateTodo}
         />
       </div>
     </div>

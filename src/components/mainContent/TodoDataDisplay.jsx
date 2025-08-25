@@ -1,6 +1,11 @@
 import TodoTask from "./TodoTask";
 
-const TodoDataDisplay = ({ loadData, deleteData, completeTask }) => {
+const TodoDataDisplay = ({
+  loadData,
+  deleteData,
+  completeTask,
+  updateTodo,
+}) => {
   return (
     <div className="px-0">
       {loadData.length === 0 ? (
@@ -8,12 +13,13 @@ const TodoDataDisplay = ({ loadData, deleteData, completeTask }) => {
           <h2 className="m-0">No Todos in the list</h2>
         </div>
       ) : (
-        loadData.map((item, index) => (
+        loadData.map((item) => (
           <TodoTask
             object={item}
-            key={index}
-            removeTodo={() => deleteData(index)}
+            key={item.id}
+            removeTodo={() => deleteData(item.id)}
             markCompleted={() => completeTask(item)}
+            updateTodo={() => updateTodo(item)}
           />
         ))
       )}

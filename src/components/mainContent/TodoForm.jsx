@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
+import { dateStartFrom } from "../../util/dateForm";
 
-const TodoForm = ({ addTodo }) => {
+const TodoForm = ({ addTodo, updateTodo }) => {
   const {
     register,
     handleSubmit,
@@ -9,12 +10,17 @@ const TodoForm = ({ addTodo }) => {
   } = useForm();
 
   const onSubmit = (data) => {
-    const itemObject = {
-      ...data,
-      id: crypto.randomUUID(),
-      isDone: false,
-    };
-    addTodo(itemObject);
+    if (updateTodo) {
+      console.log(updateTodo);
+      addTodo(updateTodo);
+    } else {
+      const itemObject = {
+        ...data,
+        id: crypto.randomUUID(),
+        isDone: false,
+      };
+      addTodo(itemObject);
+    }
     reset();
   };
 
@@ -32,6 +38,7 @@ const TodoForm = ({ addTodo }) => {
               className={`form-control ${errors.title ? "is-invalid" : ""}`}
               placeholder="Enter task title"
               {...register("title", { required: "Title is required" })}
+              value={updateTodo.title}
             />
             {errors.title && (
               <div className="invalid-feedback">{errors.title.message}</div>
@@ -52,6 +59,7 @@ const TodoForm = ({ addTodo }) => {
               {...register("description", {
                 required: "Description is required",
               })}
+              value={updateTodo.description}
             ></textarea>
             {errors.description && (
               <div className="invalid-feedback">
@@ -72,30 +80,14 @@ const TodoForm = ({ addTodo }) => {
                 min={new Date().toISOString().slice(0, 16)}
                 {...register("dueDate", {
                   required: "Due date is required",
-                  validate: (value) =>
-                    new Date(value) >= new Date() ||
-                    "Due date cannot be in the past",
+                  validate: dateStartFrom(),
                 })}
+                value={updateTodo.dueDate}
               />
               {errors.dueDate && (
                 <div className="invalid-feedback">{errors.dueDate.message}</div>
               )}
             </div>
-            {/* Uncomment if needed */}
-            {/* <div className="col-12 col-md-6 col-lg-4">
-              <label htmlFor="assignTo" className="form-label">
-                Assign to (optional)
-              </label>
-              <select
-                id="assignTo"
-                className="form-select"
-                {...register("assignTo")}
-              >
-                <option value="">-- Select Person --</option>
-                <option value="Person 1">Person 1</option>
-                <option value="Person 2">Person 2</option>
-              </select>
-            </div> */}
           </div>
           <div className="d-flex justify-content-center">
             <button type="submit" className="btn btn-primary  w-md-auto">

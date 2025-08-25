@@ -1,6 +1,6 @@
 import { formatDate } from "../../util/formatDate";
 
-const TodoTask = ({ object, removeTodo, markCompleted }) => {
+const TodoTask = ({ object, removeTodo, markCompleted, updateTodo }) => {
   const item = {
     id: object.id,
     title: object.title,
@@ -57,7 +57,7 @@ const TodoTask = ({ object, removeTodo, markCompleted }) => {
           </button>
 
           <button
-            onClick={() => console.log("Yo")}
+            onClick={() => updateTodo()}
             className="btn btn-sm btn-outline-primary"
           >
             <i className="bi bi-pencil"></i>

@@ -29,6 +29,23 @@ function MainContent() {
     }
   }, [searchTodos, allTodos]);
 
+  const updateExistingTodo = (todo) => {
+    setAllTodos((old) =>
+      old.map((t) =>
+        t.id === todo.id
+          ? {
+              ...t,
+              title: todo.title,
+              description: todo.description,
+              dueDate: todo.dueDate,
+            }
+          : t
+      )
+    );
+
+    setUpdateTodo("");
+  };
+
   const deleteTodo = (id) => {
     const newAllTodos = allTodos.filter((todo) => todo.id !== id);
     setAllTodos(newAllTodos);
@@ -77,6 +94,7 @@ function MainContent() {
             setTodos([...allTodos, newTodo]);
           }}
           updateTodo={updateTodo}
+          update={updateExistingTodo}
         />
 
         {/* Header */}

@@ -1,18 +1,27 @@
 import { useForm } from "react-hook-form";
 import { dateStartFrom } from "../../util/dateForm";
+import { useEffect } from "react";
 
-const TodoForm = ({ addTodo, updateTodo }) => {
+const TodoForm = ({ addTodo, updateTodo, update }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
     reset,
   } = useForm();
 
-  const onSubmit = (data) => {
+  useEffect(() => {
     if (updateTodo) {
-      console.log(updateTodo);
-      addTodo(updateTodo);
+      setValue("title", updateTodo.title || "");
+      setValue("description", updateTodo.description || "");
+      setValue("dueDate", updateTodo.dueDate || "");
+    }
+  }, [setValue, updateTodo]);
+
+  const onSubmit = (data) => {
+    if (updateTodo && updateTodo.id) {
+      update({ ...updateTodo, ...data });
     } else {
       const itemObject = {
         ...data,
@@ -38,10 +47,10 @@ const TodoForm = ({ addTodo, updateTodo }) => {
               className={`form-control ${errors.title ? "is-invalid" : ""}`}
               placeholder="Enter task title"
               {...register("title", { required: "Title is required" })}
-              value={updateTodo.title}
+              value={setValue(updateTodo.title)}
             />
             {errors.title && (
-              <div className="invalid-feedback">{errors.title.message}</div>
+              <span className="invalid-feedback">{errors.title.message}</span>
             )}
           </div>
 
@@ -59,12 +68,12 @@ const TodoForm = ({ addTodo, updateTodo }) => {
               {...register("description", {
                 required: "Description is required",
               })}
-              value={updateTodo.description}
+              value={setValue(updateTodo.description)}
             ></textarea>
             {errors.description && (
-              <div className="invalid-feedback">
+              <span className="invalid-feedback">
                 {errors.description.message}
-              </div>
+              </span>
             )}
           </div>
 
@@ -82,10 +91,11 @@ const TodoForm = ({ addTodo, updateTodo }) => {
                   required: "Due date is required",
                   validate: dateStartFrom(),
                 })}
-                value={updateTodo.dueDate}
               />
               {errors.dueDate && (
-                <div className="invalid-feedback">{errors.dueDate.message}</div>
+                <span className="invalid-feedback">
+                  {errors.dueDate.message}
+                </span>
               )}
             </div>
           </div>

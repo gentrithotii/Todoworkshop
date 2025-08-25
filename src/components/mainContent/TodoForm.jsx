@@ -101,7 +101,7 @@ const TodoForm = ({ addTodo, updateTodo, update }) => {
           </div>
           <div className="d-flex justify-content-center">
             <button type="submit" className="btn btn-primary  w-md-auto">
-              + Add Todo
+              {updateTodo ? "Update Todo" : "Add Todo"}
             </button>
           </div>
         </form>

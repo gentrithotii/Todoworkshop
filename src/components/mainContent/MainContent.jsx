@@ -29,7 +29,7 @@ function MainContent() {
     }
   }, [searchTodos, allTodos]);
 
-  const deleteAtIndex = (id) => {
+  const deleteTodo = (id) => {
     const newAllTodos = allTodos.filter((todo) => todo.id !== id);
     setAllTodos(newAllTodos);
     setTodos(newAllTodos);
@@ -88,7 +88,7 @@ function MainContent() {
         {/* Todos data display */}
         <TodoDataDisplay
           loadData={todos}
-          deleteData={deleteAtIndex}
+          deleteData={deleteTodo}
           completeTask={completeTask}
           updateTodo={setUpdateTodo}
         />
